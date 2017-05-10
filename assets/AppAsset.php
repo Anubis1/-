@@ -19,7 +19,6 @@ class AppAsset extends AssetBundle
     public $baseUrl = '@web';
     public $css = [
         'protect_files/style.css',
-		  'css/site.css',
 		'protect_files/media-queries.css',
 		
     ];

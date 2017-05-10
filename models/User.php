@@ -5,6 +5,12 @@ use yii\web\IdentityInterface;
 use yii\data\Pagination;
 class User extends ActiveRecord implements IdentityInterface{
 
+
+
+
+
+
+
 public static function findIdentity($id)
     {
         return static::findOne($id);

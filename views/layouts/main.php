@@ -4,6 +4,7 @@ use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
+use app\components\UserulWidget;
 
 AppAsset::register($this);
 ?>
@@ -25,65 +26,34 @@ AppAsset::register($this);
 					<div class="logo">
 					<a href="<?=Yii::$app->homeUrl?>"><?=Yii::$app->params['NameSite']?></a></div>
 					<ul class="nav">
-					<?
-						
-		 echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => [
-            ['label' => 'Новости', 'url' => ['/site/register']],
-            ['label' => 'Условия', 'url' => ['/users/index']],
-			
-			['label' => 'Владельцам', 'url' => ['/site/acaunt']],
-			['label' => 'Политика', 'url' => ['/site/acaunt']],
-			['label' => 'Форум', 'url' => ['/users/index']],
-			],
-    ]);
-					
-					?>						
+								
 					</ul>
 				</div>
 			</div>
 			<div class="content">
 				<div class="leftCol">
+	<?
+		if(!Yii::$app->user->Identity){
+		$log_reg=Html::a('Регистрация', ['/site/reg']);
+		$log_reg=Html::tag('li', $log_reg);
+		$log_r=Html::a('Авторизация', ['/site/main']);
+		$log_reg.=Html::tag('li', $log_r);
+		
+		$log_reg=Html::tag('ul', $log_reg, ['class' => 'leftNav'])
+		
+		?>
+					
+		<?echo Html::tag('div', $log_reg, ['class' => 'bloc']);
+		}?> 
 				
-					<div class="block">
-						<center><h3>Вход</h3></center>
-						<form action="">
-						<input type="text" placeholder="E-mail"><br>
-						<input type="text" placeholder="******">
-						<button>Войти</button>
-						</form>
-					</div>
 				
 				
-					<ul class="leftNav">
-						<li><a href="">Аккаунты</a></li>
-						<li><a href="">Блоги</a></li>
-						
-						<li><a href="">E-mail</a></li>
-						<li><a href="">Игры</a></li>
-						<li><a href="">Сайты</a></li>
-						<li><a href="">Скрипты</a></li>
-						<li><a href="">Программы</a></li>
-						<li><a href="">Обмен</a></li>
-						<li><a href="">Продажа</a></li>
-						<li><a href="">Услуги</a></li>
-						<li><a href="">Информация</a></li>
+				
 						
 					
-						 
-						
-					</ul>
-				
+	
 					
-					
-					
-					<div class="block">
-						<h3>Верхний Левый Блок</h3>
-						<p><i>Но я должен объяснить вам, как все это родилось ошибка сидеть voluptatem accusantium doloremque laudantium, целое дело, и она, которой от него исследователя истины, мастер-строитель человеческого счастья. Не очень приятно, потому что это удовольствие отвергает, не презирает, или ненавидит или избегает, а потому, что они следуют Великой скорби тех, кто есть причина искать удовольствий, не осознавая этого.</i></p>
-						<p><a href="reg" class="more">Регестрация</a></p>
-					</div>
-				
+											
 				</div>
 				<div class="main">
 				     <?= Breadcrumbs::widget([
