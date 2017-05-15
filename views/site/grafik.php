@@ -24,36 +24,22 @@ td, th {
    </tr>
  
    <?php
+   $array=array();
+     $arrays=array();
+   $i=0;
 foreach ( $model as $movie ) {
-
- 
-
-  echo ' <tr>';
-
- 
-
-  foreach ( $movie as $key => $value ) {
-
-    echo "<td>$value</td>";
-
-  }
-
- 
-
-  echo '</tr>';
-
+echo ' <tr>';
+$i=0;
+foreach ( $movie as $key => $value ) {
+	if($i==1)$id=$value;
+	if($id[0]=="#")$id="Heshtegs";
+	if($i==4)$arrays[$id]+=$value;
+echo "<td>$value</td>";
+$i++;
 }
-
-	
- //  var_dump($model);
-
-
-   
-   
-/*
-foreach ($result as $m): ?>
- 
-<?php endforeach;*/?>
+echo '</tr>';
+}
+?>
 
 
 
@@ -69,17 +55,18 @@ foreach ($result as $m): ?>
 	 <th>duration</th>
 	 
    </tr>
- 
+ <tr>
    <?php
-foreach ( $new as $movie ) {
-echo ' <tr>';
-foreach ( $movie as $key => $value ) {
-echo "<td>$value</td>";
+   $d='';
+foreach ( $arrays as $key => $value ) {
+	echo '<tr>';
+echo "<td>$key</td><td>$value</td>";
+$d.=$value;
 }
 echo '</tr>';
 
-}
+
 ?> 
-  </table>
+
   
  
